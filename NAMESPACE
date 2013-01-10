@@ -1,0 +1,4 @@
+export(
+    pgram, scoh, permest, persigest, peracf, Bcoeff, Bcoeffa, perpacf, ppfplot, ppfcoeffab, acfpacf.acf, acfpacf.pacf, acfpacf,
+
+ perYW, predictperYW, predseries, loglikec, parmafil, makeparma, R_w_ma, ab2phth, phth2ab, parma_ident, loglikef, parmaresid, parmaf)
