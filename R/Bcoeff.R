@@ -3,8 +3,6 @@ Bcoeff<-function(x,T,tau,missval,datastr,...)
   Bcoeff_full<-function(x,T,tau,missval,datastr,printflg,meth) 
     {
 
-    if (!is.real(x)) {stop(" x must be real")}
-
        nout= floor((T+2)/2)    
        nx=length(x)
        pmean1<-matrix(0,nx,1)  

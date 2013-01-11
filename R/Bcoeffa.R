@@ -3,7 +3,7 @@ Bcoeffa<-function(x,T,tau,missval,datastr,...)
   Bcoeffa_full<-function(x,T,tau,missval,datastr,printflg,meth) 
   {
 
-       if (!is.real(x))   {stop("'x' must be real")}
+      
 
        nout=floor((T+2)/2)    
        nx=length(x)
