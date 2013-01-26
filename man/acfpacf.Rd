@@ -71,8 +71,9 @@ of the ACF function. If the estimated \code{acf} values estimates
  are IID then we have \code{nac} independent tests of \code{acf(k) = 0}. The probability that at least one of values 
 lies outside the interval \code{[-thr, thr]} is equal to \code{1-Pr[all lie inside]}, which is \code{[1-(1-acalpha)]^nac}. 
 Finally, the last expression is approximately 
-equal to \code{nac*acalpha}. To get a threshold \code{thrmh} such that \code{1-Pr[ all lie inside]=acalpha}  we
- take the threshold as \code{thrmh = qnorm(1-(acalpha/2)/nac,0,1/sqrt(nr))} (for more details check the Bonferroni correction).\cr
+equal to \code{nac*acalpha}. To get a threshold \code{thrmh} such that \code{1-Pr[all lie inside] = acalpha}  we
+ take the threshold as \cr
+ \code{thrmh = qnorm (1-(acalpha/2)/nac, 0, 1/sqrt(nr))} (for more details check the Bonferroni correction).\cr
 For the PACF, the threshold \code{thrm} calculation is based on Theorem 8.1.2
  of Time Series: Theory and Methods, p. 241, which states that the PACF values for an AR sequence are 
 asymptotically normal.

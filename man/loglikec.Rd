@@ -25,9 +25,9 @@ input time series.
   \item{conpars}{vector of parameters \code{[T, p, q, stype]},\cr
  \code{T} period of PC-T structure,\cr
  \code{p, q} maximum PAR and PMA order, respectively,\cr
- \code{stype}  numeric parameter connected with covariance matrix computation, so far based only on procedure 
-\code{R_w_ma} (see \code{R_w_ma} description). Here \code{stype}  can have any value apart from 1, because \code{stype=1} is reserved for a procedure for 
-full covariance matrix computation, it will be used in the future.  
+ \code{stype}  numeric parameter connected with covariance matrix computation, so far should be equal to 0 to use procedure 
+\code{R_w_ma} (see \code{R_w_ma} description). In the future also other values of \code{stype} will be available for 
+full covariance matrix computation.  
 }
 }
 \details{
@@ -43,7 +43,7 @@ inverse and the likelihood are computed from the reduced rank covariance matrix.
 }
 \value{
 list of values:
-\item{loglik}{logarithm of likehood function.}
+\item{loglik}{logarithm of likehood function (nagative value).}
 \item{aicval}{value of AIC criterion.}
 \item{fpeval}{value of FPE criterion.}
 \item{bicval}{value of BIC criterion.}

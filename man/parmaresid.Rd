@@ -17,9 +17,9 @@ parmaresid(x, stype, del, phi,...)
   \item{x}{
 input time series.
 }
-\item{stype}{ numeric parameter connected with covariance matrix computation, so far based only on procedure 
-\code{R_w_ma} (see \code{R_w_ma} description). Here \code{stype}  can have any value apart from 1, because \code{stype=1} is reserved for a procedure for 
-full covariance matrix computation, it will be used in the future.
+\item{stype}{ numeric parameter connected with covariance matrix computation, so far should be equal to 0 to use procedure 
+\code{R_w_ma} (see \code{R_w_ma} description). In the future also other values of \code{stype} will be available for 
+full covariance matrix computation.
 }
   \item{del}{
 vector of coefficients of length \eqn{T}.

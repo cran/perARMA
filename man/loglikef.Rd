@@ -34,9 +34,9 @@ vector of parameters \code{[T,p,q,naf,nbf,del_mask,iaf,ibf,stype]}:\cr
  \code{naf, nbf} total active coefficients in \code{a} and \code{b}, respectively,\cr
  \code{del_mask} vector of length \code{T} (it will be used in the future, so far the user should set \code{del_mask=matrix(1,T,1)}),\cr
  \code{iaf, ibf} linear indexes of active coefficients in \code{a} and \code{b}, respectively,\cr
-  \code{stype}  numeric parameter connected with covariance matrix computation, so far based only on procedure 
-\code{R_w_ma} (see \code{R_w_ma} description). Here \code{stype}  can have any value apart from 1, because \code{stype=1} is reserved for a procedure for 
-full covariance matrix computation, it will be used in the future.
+  \code{stype}  numeric parameter connected with covariance matrix computation, so far should be equal to 0 to use procedure 
+\code{R_w_ma} (see \code{R_w_ma} description). In the future also other values of \code{stype} will be available for 
+full covariance matrix computation. 
 }
 }
 
@@ -53,7 +53,7 @@ the computation of covariance matrix from the parameters \code{phi}, \code{del},
 inverse and the likelihood are computed from the reduced rank covariance matrix.
 }
 \value{
-value of the logarithm of likelihood function: \code{y}.
+negative value of the logarithm of likelihood function: \code{y}.
 }
 \references{
 Box, G. E. P., Jenkins, G. M., Reinsel, G. (1994), Time Series Analysis, 3rd Ed., Prentice-Hall, Englewood Cliffs, NJ.

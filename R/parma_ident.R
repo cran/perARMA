@@ -41,7 +41,7 @@ function(x,T,missval,datastr,...)
        } else {
        PRTTAU=NULL}
 
-     dev.set(which=1) 
+    
      peracf_out<-peracf(x,T,seq(0,MAXTAU),missval,datastr,prttaus=PRTTAU,plottaus=BTAU)
      B=peracf_out$B
      B=as.matrix(B)
@@ -187,23 +187,3 @@ L<-modifyList(list(outdir='IDENT_OUT',details=1),list(x = x, T=T, missval=missva
  do.call(parma_ident,L)
 
 }
-
-
-
-
-
-
-
-
-
-
-  
-
-   
-
-    
-
- 
-
-
-
