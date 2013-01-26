@@ -15,8 +15,8 @@ levels.
 \tabular{ll}{
 Package: \tab perARMA\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2012-07-29\cr
+Version: \tab 1.3\cr
+Date: \tab 2013-01-26\cr
 License: \tab GPL(>=2.0)\cr
 LazyLoad: \tab yes\cr
 }

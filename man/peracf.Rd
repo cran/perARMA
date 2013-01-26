@@ -4,12 +4,12 @@
 }
 \description{
 Function \code{peracf}, given an input time series and a specified period \code{T}, computes the periodic correlation coefficients such that
-\eqn{ \rho(\nu+\tau,\nu)=\rho(\nu,\tau)}, where \eqn{\nu = 1,\ldots, T}
+\eqn{ \rho(t+\tau,t)=\rho(t,\tau)}, where \eqn{t = 1,\ldots, T}
  are seasons and \eqn{\tau} is lag. For each 
 possible pair of \eqn{ t} and \eqn{\tau } confidence limits for 
-\eqn{\rho(\nu,\tau)} are also computed using Fisher
+\eqn{\rho(t,\tau)} are also computed using Fisher
  transformation. Procedure \code{peracf}
-provides also two important tests: \eqn{ \rho(\nu+\tau,\nu) \equiv \rho(\tau)} and \eqn{\rho(\nu+\tau,\nu) \equiv 0}.
+provides also two important tests: \eqn{ \rho(t+\tau,t) \equiv \rho(\tau)} and \eqn{\rho(t+\tau,t) \equiv 0}.
 }
 \usage{
 peracf(x, T, tau, missval, datastr,...)
@@ -32,8 +32,8 @@ notation for missing values (denoted as NaN).
  \item{datastr}{
 string name of data for printing.
 }
-\item{...}{other arguments, that are connected with the plots: \code{prttaus, plottaus, cialpha, typeci, typerho, pchci, pchrho, colci, colrho},
-where\cr
+\item{...}{other arguments, that are connected with the plots:\cr
+ \code{prttaus, plottaus, cialpha, typeci, typerho, pchci, pchrho, colci, colrho}, where\cr
  \code{prttaus} is a set of lags for which correlation coefficients are printed; it is a subset of \code{tau}, \cr
  \code{plottaus} is a set of lags for plotting the correlation coefficients 
 (one plot per lag); it is a subset of \code{tau},\cr
@@ -46,16 +46,16 @@ By default these parameters are fixed to \code{prttaus = seq(1,T/2)}, \code{plot
 \details{
 Function \code{peracf} uses three separate procedures:\cr
 \code{rhoci()} returns the upper and lower bands defining a \eqn{1 - \alpha} confidence interval for the true values of
- \eqn{ \rho(\nu, \tau)},\cr
-\code{rho.zero.test()}  tests whether the estimated correlation coefficients are equal to zeros, \eqn{ \rho(\nu+\tau,\nu) \equiv 0}.\cr
+ \eqn{ \rho(t, \tau)},\cr
+\code{rho.zero.test()}  tests whether the estimated correlation coefficients are equal to zeros, \eqn{ \rho(t+\tau,t) \equiv 0}.\cr
 \code{rho.equal.test()}  tests whether the estimated correlation coefficients are equal to each other for all seasons in the period,
- \eqn{ \rho(\nu+\tau,\nu) \equiv \rho(\tau)}.\cr
+ \eqn{ \rho(t+\tau,t) \equiv \rho(\tau)}.\cr
 
-In the test \eqn{ \rho(\nu+\tau,\nu) \equiv \rho(\tau)}, rejection indicates 
+In the test \eqn{ \rho(t+\tau,t) \equiv \rho(\tau)}, rejection indicates 
 that series is properly PC and is not just an amplitude modulated stationary 
-sequence. That is, there exist lags for which \eqn{ \rho(\nu+\tau,\nu)}
+sequence. That is, there exist lags for which \eqn{ \rho(t+\tau,t)}
 are properly periodic.\cr
-In the test \eqn{\rho(\nu+\tau,\nu) \equiv 0}, the
+In the test \eqn{\rho(t+\tau,t) \equiv 0}, the
  rejection for some \eqn{ \tau \neq 0} indicates the sequence is not PC white noise.
 }
 \value{
