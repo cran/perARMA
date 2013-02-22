@@ -47,7 +47,6 @@ list of values:
 \item{aicval}{value of AIC criterion.}
 \item{fpeval}{value of FPE criterion.}
 \item{bicval}{value of BIC criterion.}
-\item{mse}{value of MSE of residuals.}
 
 }
 \note{
@@ -89,5 +88,4 @@ Harry Hurd
 \keyword{Likehood}
 \keyword{AIC}
 \keyword{BIC}
-\keyword{MSE}
 \keyword{FPE}

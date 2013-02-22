@@ -40,7 +40,8 @@ is length of \code{x}. Parameter \code{normflg} can be equal to: \cr
 In \code{acfpacf} procedure \code{normflg=3} is used. 
 }
   \item{m}{
-maximum lag to compute PACF values. Value for the first lag (\code{pacf(1)}) is equal to \code{acf(2)} and then for computing values for \code{k = 2, \ldots, m} the Toeplitz structure
+maximum lag to compute PACF values. Value for the first lag (\code{pacf(1)}) is equal to \code{acf(2)}, which is the lag 1 acf
+value, and then for computing values for \code{k = 2, \ldots, m} the Toeplitz structure
  of the projection equations is used (see Brockwell, P. J., Davis, R. A., 1991, Time Series: Theory and Methods, example 4.4.2).
 }
 \item{...}{other arguments:\cr

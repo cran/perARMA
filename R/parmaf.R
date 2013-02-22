@@ -172,7 +172,7 @@ function(x,T,p,q,af,bf,...)
       bicval=negloglik + netpars*log(nval)                          
       fpeval=mse*(1+netpars/nval)/(1-netpars/nval)
 
-      result = list(a=a,b=b,negloglik=negloglik,aicval=aicval,fpeval=fpeval,bicval=bicval,mse=mse,resids=resids)
+      result = list(a=a,b=b,negloglik=negloglik,aicval=aicval,fpeval=fpeval,bicval=bicval,resids=resids)
       class(result) = "parmaf"
       result
      }

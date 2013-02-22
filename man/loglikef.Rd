@@ -85,35 +85,4 @@ This function is used in \code{parmaf} procedure, thus for more details please l
 \seealso{
   \code{\link{R_w_ma}},  \code{\link{parmaresid}}, \code{\link{parmaf}}
 }
-\examples{
-
-## Do not run 
-## It could take a few seconds
-
-#data(volumes)
-#pmean<-permest(t(volumes),24, 0.05, NaN,'volumes', pp=0)
-#xd=pmean$xd
-#estimators<-perYW(volumes,24,2,NaN)
-#phi=as.matrix(estimators$phi)
-#del=as.matrix(estimators$del)
-
-#phif<-phth2ab(phi) 
-#af=phif$a
-#af=as.matrix(af)
-
-#delf<-phth2ab(del)
-#bf=delf$a
-#bf=as.matrix(bf)
-
-#naf=base::sum(af[,]!=0)
-#nbf=base::sum(bf[,]!=0)
-
-#iaf=which(af[,]!=0)
-#ibf=which(bf[,]!=0)
-
-#ab=c(af[iaf],bf[ibf])
-#conpars=c(24,2,0,naf,nbf,matrix(1,24,1), iaf, ibf, 0)
-
-#loglikef(ab,xd,conpars)
-}
 \keyword{Likelihood}

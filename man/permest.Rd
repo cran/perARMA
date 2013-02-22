@@ -48,7 +48,7 @@ particular season. The p-value for a one-way
 ANOVA test for equality of seasonal means is also computed.
 }
 \value{
-table of values:
+procedure returns:
 \item{pmean}{periodic mean values.}
 \item{lower,upper}{bounds of the confidence intervals.}
 \item{xr}{series with missing values replaced by periodic mean values.}

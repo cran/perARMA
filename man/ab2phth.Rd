@@ -29,7 +29,7 @@ martix \code{phi} or \code{a} for \code{ab2phth} or \code{phth2ab}, respectively
 Harry Hurd
 }
 \seealso{
-\code{\link{makeparma}},  \code{\link{parma_ident}}
+\code{\link{makepar}}, \code{\link{makeparma}},  \code{\link{parma_ident}}
 }
 \examples{
  m=matrix(seq(0,11),3,4)
