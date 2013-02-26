@@ -59,7 +59,7 @@ the magnitudes of neighboring frequencies
 (via the F distribution) (see Hurd, H. L., Miamee, A. G., 2007, Periodically Correlated Random Sequences, pp. 272-282, 288-292).
 }
 \value{
-procedure prints a table containing the following columns:
+procedures (for positive \code{printflg} parameter) print a table containing the following columns:
 \item{k}{index number of the coefficient \eqn{B_k(\tau)}.}
 \item{reB_k,imB_k/ahat_k}{real and imaginary parts of estimated coefficient \eqn{B_k(\tau)} (\code{Bcoeff} procedure) / real coefficients in representation of coefficient
  \eqn{B_k(\tau)} (\code{Bcoeffa} procedure).}
@@ -71,7 +71,7 @@ frequencies in the neighborhood of the frequency \eqn{2\pi k /T}.}
 \item{Fratio}{ the statistic \eqn{(SS1/n1)/(SS2/n2)}, which under
 the null hypothesis has \eqn{F(n1,n2)} distribution.}
 \item{pv}{p-values for test of \eqn{\left|B_k(\tau)\right|^2=0}, based on F distribution.}
-If \code{printflg} is set to be equal to 0, above values are returned as matrices.
+If \code{printflg} is set to be equal to 0, above values are returned just as matrices.
 }
 \references{
 Dehay, D., Hurd, H. L., (1994), Representation and Estimation for Periodically and Almost Periodically 

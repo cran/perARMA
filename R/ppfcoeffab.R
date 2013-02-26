@@ -26,16 +26,17 @@ function(ppf,nsamp,printflg,datastr){
                pkpv[j,]=2*(1-pnorm(abs(pkab[j,]),0,sigma))
            }
       if (printflg)
-         {for (k in 1:nc)
-            {cat(paste('pi coeffs in ab form for',datastr, 'n= ',k-1,'\n'))
-             cat(paste('k  pihat_k   pv','\n'))
-          for (kk in 1:T)
-           { cat(paste('',kk-1,pkab[kk,k],pkpv[kk,k],'\n'))}
+         {  for (k in 1:nc)
+            {cat(paste('\n'))
+            cat(paste('pi coeffs in ab form for',datastr, ',n= ',k-1,'\n'))
+            detail <- matrix(c(pkab[,k],Re(pkpv[,k])),ncol=2)
+                 colnames(detail) <- c("pihat_k", "pv")
+                  row.names(detail)<-paste("k=",seq(0,T-1), sep="")
+                 print(detail)
         }    
-    }
+      }
       
       result = list(pkab=pkab,pkpv=pkpv)  
       class(result) = "ppfcoeffab"
       result
 }
-

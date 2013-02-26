@@ -144,7 +144,7 @@ function (ptvec,x,conpars) {
       bicval=loglik+ netpars*log(nval)                          
       fpeval=mse*(1+netpars/nval)/(1-netpars/nval)
 
-      result = list(loglik=loglik,aicval=aicval,fpeval=fpeval,bicval=bicval,mse=mse)
+      result = list(loglik=loglik,aicval=aicval,fpeval=fpeval,bicval=bicval)
        class(result) = "loglikec"
        result
 

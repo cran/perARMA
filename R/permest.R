@@ -9,7 +9,7 @@ permest <-function(x,T,alpha,missval,datastr,...){
        if ( nrem>0) {nper=nper+1}
    
 
-      if (is.nan( missval)) {
+       if (is.nan( missval)) {
           missisnan=1
           imissx=x[(is.nan(x))]
          } else {
@@ -30,55 +30,54 @@ permest <-function(x,T,alpha,missval,datastr,...){
       X=NaN*matrix(1,nper,T)  
   
     if (pp)
-     {cat(paste('found ',nper,' periods of length ',T,' with remaider of ',nrem,'\n'))  
-     cat(' i ngood nmiss    pmean      lower   upper','\n')
+     {
+      cat(paste('found ',nper,' periods of length ',T,' with remainder of ',nrem,'\n'))  
      }
 
-     
+     vimiss<-c()
      for (i in 1:T)
-          {  index=seq(i,nx,T)
+     {  index=seq(i,nx,T)
                z=x[index]                
-          if (missisnan)  
-            { igood=which(!is.nan(z))    
-              imiss=which(is.nan(z))
-              }  else  {
-             igood=which((z!=missval))
-             imiss=which((z==missval))
-           } 
+               if (missisnan)  
+              { igood=which(!is.nan(z))    
+                imiss=which(is.nan(z))
+                }  else  {
+                igood=which((z!=missval))
+                imiss=which((z==missval))
+              } 
         
-      z=z[igood]  
+         z=z[igood]  
+         bigz<-c(bigz,z)      
 
-
-      bigz<-c(bigz,z)      
-
-      ny[i]=length(z)
-      if (ny[i]==nper) 
+        ny[i]=length(z)
+        if (ny[i]==nper) 
            {X[,i]=z                  
             } else  {                
            X[(1:ny[i]),i]=z
            X[(ny[i]+1):nper,i]=NaN }
                 
-     if ( ny[i]>0)
-       { groupz<-c(groupz,i*matrix(1,ny[i],1)) }
+        if ( ny[i]>0)
+         { groupz<-c(groupz,i*matrix(1,ny[i],1)) }
 
-     pmean[i]=mean(z)            
-     pstd[i]=sd(z)       
-     x[index[imiss]]=pmean[i]
-     xr=t(x)                       
-     pmean1[index]=pmean[i]      
+      pmean[i]=mean(z)            
+      pstd[i]=sd(z)       
+      x[index[imiss]]=pmean[i]
+      xr=t(x)                       
+      pmean1[index]=pmean[i]      
                                
-     t0 = qt(c(alpha/2, 1-alpha/2),ny[i]-1)
-     pmci[i,1] = pmean[i] + t0[1]*pstd[i]/sqrt(ny[i]-1)
-     pmci[i,2] = pmean[i] + t0[2]*pstd[i]/sqrt(ny[i]-1)   
+       t0 = qt(c(alpha/2, 1-alpha/2),ny[i]-1)
+       pmci[i,1] = pmean[i] + t0[1]*pstd[i]/sqrt(ny[i]-1)
+       pmci[i,2] = pmean[i] + t0[2]*pstd[i]/sqrt(ny[i]-1)   
 
-     if (pp)
-     {
-     cat(paste(i,ny[i],length(imiss),pmean[i],pmci[i,1], pmci[i,2],'\n'))
-     }
+      vimiss[i]=length(imiss)
+}
 
-      }
+  if (pp)
+     { detail <- matrix(c(ny,vimiss,pmean,pmci[,1], pmci[,2]),ncol=5)
+       colnames(detail) <- c(" ngood", "nmiss"," pmean ", "lower", "upper")
+       row.names(detail)<-paste("i=",seq(1,T), sep="")
+       print(detail) }   
     
-
     xd=t(x)-pmean1
    
     pmean.aov= aov(bigz~groupz)  
@@ -102,5 +101,3 @@ L<-modifyList(list(typeci="o",typepmean="b",pchci=10,pchpmean=15,colci="red",col
  do.call(permest_full,L)
 
  }
-
-

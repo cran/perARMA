@@ -4,7 +4,7 @@
 PARMA coefficients estimation
 }
 \description{
-Procedure \code{parmaf} enables to estimate the values of the chosen representation of PARMA(p,q) model. For general PARMA we use non-linear 
+Procedure \code{parmaf} enables the estimation of parameters of the chosen representation of PARMA(p,q) model. For general PARMA we use non-linear 
 optimization methods to obtain minimum of negative logarithm of likelihood function using \code{loglikef} procedure. Intitial values of parameters are computed using Yule-Walker equations.
 }
 \usage{
@@ -61,7 +61,6 @@ list of values:
 \item{aicval}{value of AIC criterion.}
 \item{fpeval}{value of FPE criterion.}
 \item{bicval}{value of BIC criterion.}
-\item{mse}{value of MSE of residuals.}
 \item{resids}{series of residuals.}
 }
 \references{

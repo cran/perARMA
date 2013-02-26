@@ -77,7 +77,9 @@ The function \code{ppfcoeffab} returns table of values:
 \item{pv}{Bonferroni corrected p-values.}
 
 The function \code{ppfplot} returns plot of \eqn{\pi(t,n+1)} coefficients and table of p-vaules for provided
-tests. 
+tests. Note that there are two plots; the first plot presents values of \eqn{\pi(t,n+1)} for all considered \eqn{t} and \eqn{n}, whereas
+the second plot presents separate charts for particular \eqn{t} values.
+
 }
 \references{
 Hurd, H. L., Miamee, A. G., (2007), Periodically Correlated Random Sequences: Spectral Theory and Practice, Wiley InterScience.
@@ -94,7 +96,6 @@ Harry Hurd
  ppa=perpacf_out$ppa
  nsamp=perpacf_out$nsamp
  ppfcoeffab(ppa,nsamp,1,'volumes')
- dev.set(which=1)
  ppfplot(ppa,41,.05,'volumes')
 }
 \keyword{perpacf}

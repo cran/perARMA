@@ -3,7 +3,7 @@
 \title{ Periodic ACF function
 }
 \description{
-Function \code{peracf}, given an input time series and a specified period \code{T}, computes the periodic correlation coefficients such that
+Function \code{peracf}, given an input time series and a specified period \code{T}, computes the periodic correlation coefficients for which
 \eqn{ \rho(t+\tau,t)=\rho(t,\tau)}, where \eqn{t = 1,\ldots, T}
  are seasons and \eqn{\tau} is lag. For each 
 possible pair of \eqn{ t} and \eqn{\tau } confidence limits for 
@@ -51,10 +51,12 @@ Function \code{peracf} uses three separate procedures:\cr
 \code{rho.equal.test()}  tests whether the estimated correlation coefficients are equal to each other for all seasons in the period,
  \eqn{ \rho(t+\tau,t) \equiv \rho(\tau)}.\cr
 
-In the test \eqn{ \rho(t+\tau,t) \equiv \rho(\tau)}, rejection indicates 
+In the test \eqn{ \rho(t+\tau,t) \equiv \rho(\tau)}, rejection for some \eqn{\tau
+> 0} indicates 
 that series is properly PC and is not just an amplitude modulated stationary 
-sequence. That is, there exist lags for which \eqn{ \rho(t+\tau,t)}
-are properly periodic.\cr
+sequence. In other words, there exists a nonzero
+lag \eqn{\tau} for which \eqn{ \rho(t+\tau,t)} is 
+properly periodic in \eqn{t}.\cr
 In the test \eqn{\rho(t+\tau,t) \equiv 0}, the
  rejection for some \eqn{ \tau \neq 0} indicates the sequence is not PC white noise.
 }
@@ -64,6 +66,7 @@ tables of values for each specified lag \eqn{\tau}:
 \item{lower}{lower bands of confidence intervals.}
 \item{upper}{upper bands of confidence intervals.}
 \item{nsamp}{number of samples used in each estimation.}
+Above values are also returned as matrices.
 }
 \references{
 Hurd, H. L., Miamee, A. G., (2007), Periodically Correlated Random Sequences: Spectral Theory and Practice, Wiley InterScience.

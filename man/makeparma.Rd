@@ -1,17 +1,19 @@
 \name{makeparma}
 \alias{makeparma}
+\alias{makepar}
 \title{
 Simulation of PARMA sequence
 }
 \description{
-Procedure \code{makeparma} enables to construct PARMA type sequence of length \code{n} 
-according to inputed matrices \code{phi}, \code{theta}, \code{del}.
+Procedures \code{makeparma} and \code{makepar}  enable to construct PARMA and PAR type sequence of length \code{n} 
+according to inputed matrices \code{phi}, \code{theta}, \code{del}. 
 The optional parameter \code{nprep} defines the number of 
 periods of simulated output \code{y} that will be discarded to let 
 the start-up transients settle.
 }
 \usage{
 makeparma(n, phi, theta, del, nprep)
+makepar(n, phi, del, nprep)
 }
 \arguments{
   \item{n}{
@@ -33,7 +35,10 @@ number of periods of simulated output; for \code{p>0} the computation of new
 a PARMA with the assumption that old values of \code{y} are equal to zero causes
  a transient in the output. This transient dies out as time goes on. So to avoid this transient problem, 
 we compute \code{nprep} periods of simulated output to allow the transient to die out.\cr
-This parameter is optional, because by default is equal to \code{nprep=50.}
+This parameter is optional, because by default  \code{nprep=50} (for \code{makeparma} procedure) or \code{nprep=10}
+(for \code{makepar} procedure). Later we will provide a function to compute an
+appropriate value of \code{nprep} that 
+depends on the PARMA parameters.
 }
 }
 \details{
@@ -46,7 +51,7 @@ to generate the filtered series (pre-iterates and the \code{n} desired data).
 The last \code{n} data of the filtered series are output in the vector \code{y}.
 }
 \value{
-PARMA sequence returned as \code{y}.
+PARMA or PAR sequence returned as \code{y}.
 }
 \author{
 Harry Hurd 
@@ -56,6 +61,7 @@ Harry Hurd
 }
 
 \examples{
+##################### simulation of PARMA(2,1)
 T=12
 nlen=480
 p=2
@@ -77,5 +83,25 @@ theta0=as.matrix(theta0)
 
 del0=matrix(1,T,1)       
 
-makeparma(nlen,phi0,theta0,del0)
+PARMA21<-makeparma(nlen,phi0,theta0,del0)
+parma<-PARMA21$y
+plot(ts(parma))
+
+##################### simulation of PAR(2)
+T=24
+nlen=1000
+p=2
+a=matrix(0,T,p)
+a[1,1]=.5
+a[2,2]=.4
+
+phia<-ab2phth(a)
+phi0=phia$phi
+phi0=as.matrix(phi0)
+
+del0=matrix(1,T,1)
+
+PAR1<-makepar(nlen,phi0,del0)
+par<-PAR1$y
+plot(ts(par))
 }

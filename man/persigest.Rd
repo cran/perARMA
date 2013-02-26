@@ -54,10 +54,10 @@ Rejection of homogeneity
 not series is simply the result of a stationary process subjected
  to amplitude-scale modulation. To
 resolve this\eqn{ R (t + \tau, t) } for  some \eqn{ \tau \neq 0 }
- needs to be estimated.
+ need to be estimated.
 }
 \value{
-table of values:
+procedure returns:
 \item{pstd}{periodic standard deviations values.}
 \item{lower,upper}{bounds of the confidence intervals.}
  \item{xn}{series after removing periodic mean and divided by standard deviations}

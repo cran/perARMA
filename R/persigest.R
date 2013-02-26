@@ -9,7 +9,7 @@ persigest<-function (x, T, alpha, missval, datastr, ...)
         nrem = nx - nxact
         if (!is.nan(datastr)) {
             cat(paste("found ", nper, " periods of length ", 
-                T, " with remaider of ", nrem, "\n"))
+                T, " with remainder of ", nrem, "\n"))
         }
         if (is.nan(missval)) {
             missisnan = 1
@@ -27,10 +27,8 @@ persigest<-function (x, T, alpha, missval, datastr, ...)
         ny <- matrix(0, T, 1)
         psci <- matrix(0, T, 2)
         X <- matrix()
-        if (pp) {
-            cat(" i ngood nmiss    pstd      lower   upper", 
-                "\n")
-        }
+        
+        vimiss<-c()
         for (i in 1:T) {
             index = seq(i, nx, T)
             z = x[index]
@@ -55,11 +53,16 @@ persigest<-function (x, T, alpha, missval, datastr, ...)
             a <- matrix(1, length(z), 1)
             ai <- a * i
             b <- list(t(z), t(ai))
-            if (pp) {
-                cat(paste(i, ny[i], length(imiss), pstd[i], psci[i, 
-                  1], psci[i, 2], "\n"))
-            }
+           
+           vimiss[i]=length(imiss)
         }
+
+         if (pp) 
+         {  detail <- matrix(c(ny,vimiss,pstd,psci[,1], psci[,2]),ncol=5)
+            colnames(detail) <- c(" ngood", "nmiss"," pstd ", "lower", "upper")
+            row.names(detail)<-paste("i=",seq(1,T), sep="")
+            print(detail) } 
+
         htest <- bartlett.test(b)
         pspv <- htest[3]
         xd = t(x) - pmean1
@@ -69,7 +72,8 @@ persigest<-function (x, T, alpha, missval, datastr, ...)
             points(pstd1, type = typepstd, lwd = 1, lty = 1, 
                 col = colpstd, pch = pchpstd)
             title(main = (paste("Periodic standard deviations: ", 
-                "No. periods =", nper, " alpha =", alpha)), sub = (paste("Bartlett p-value:", pspv)))
+                "No. periods =", nper, " alpha =", alpha)), sub = (paste("Bartlett p-value:", 
+                pspv)))
             legend("bottomright", c(expression(std), expression(confidence_intervals)), 
                 fill = c(colpstd, colci), ncol = 2, title = "legend")
         }
