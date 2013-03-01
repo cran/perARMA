@@ -1,4 +1,4 @@
-cc6480fe3932b6d519910ec8b6ee004b *DESCRIPTION
+12a81f235076877d2ea4f6f128a01766 *DESCRIPTION
 e7042692e7b99fec882e9ea7f6b3945f *NAMESPACE
 d0e7f7a82b2d432a419b6a2ecfe4da54 *R/B2R.R
 2ca886418d9479a5db27bbfcfb41b9a0 *R/Bcoeff.R
@@ -7,7 +7,7 @@ c62687f233039a4f5a9d64f4759e31fc *R/R_w.R
 2aeedb17ae421e79750d4205f19e56e1 *R/R_w_ma.R
 5110daa0544e84d2f7c4ebb1f2f6b99a *R/RparmaT.R
 02b780e2c3d9a709a3b60d9db5c98b1c *R/ab2phth.R
-f3e77f968d757ca5fd79ce43502267ae *R/acfpacf.R
+1e3e6f9c449a12fe020c7468cc0351e8 *R/acfpacf.R
 c884ec9b595268a0b8c48a7a1da71872 *R/acfpacf.acf.R
 e155ba91dd0ebbaeefad9f987ee563ec *R/acfpacf.pacf.R
 803a328880042b1e321d45a4c1c7d0d3 *R/loglikec.R
@@ -28,7 +28,7 @@ d47782117aa8efd9cc76827172bcbf62 *R/perpacf.R
 792ce1782b1e600d8b04b2e41a579e67 *R/pgram.R
 7caa14deb19c0a2fd78c5fcb718dd4cb *R/phth2ab.R
 b191acfe474fa86df3e209a63dbc12e7 *R/ppfcoeffab.R
-096217a784e95930de06d3cb93573fc6 *R/ppfplot.R
+d688f178436a39954a716c79ced90003 *R/ppfplot.R
 4296b58b0d101cd3c33b82e7dcc2f9a1 *R/predictperYW.R
 1963a09b148459b6b80234b1fef7c157 *R/predseries.R
 0a8cfaae72a7fd85b7a79e12ff491736 *R/rho.constant.test.R
@@ -52,7 +52,7 @@ bb7b146e6029724d6430d2114d995cf7 *man/loglikec.Rd
 aa1a077a5de9adc9cd38ad321c67c201 *man/parmaf.Rd
 9d6781c9788d815f17e9aa15361ca492 *man/parmafil.Rd
 bde241521eafc03924659da69ab9597e *man/parmaresid.Rd
-2b0e92737a09ea65ee8a4e889a43a805 *man/perARMA-package.Rd
+fb25405ecbf58926fff5eba30fabbcf3 *man/perARMA-package.Rd
 24b847838147e06a5955ef339bee27e0 *man/perYW.Rd
 75b466ccbf5cae7b7b0ab8557192ea2b *man/peracf.Rd
 e475eebae951f14740d8d48636899b31 *man/permest.Rd

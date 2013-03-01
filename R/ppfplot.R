@@ -11,7 +11,7 @@ function(ppf,nsamp,alpha,datastr){
 
       dev.set(which=1) 
       ylab.name=expression( pi(t,n+1))
-      matplot(seq(0,nc-1),t(ppf), xlab="n = no. samples ", ylab=ylab.name,type="l",lwd=1, ylim=c(-1,1))
+      matplot(seq(0,nc-1),t(ppf), xlab="n = samples between", ylab=ylab.name,type="l",lwd=1, ylim=c(-1,1))
 
       lines(seq(0,nc-1),-thr%*%matrix(1,1,nc),type="l", col="red",lwd=1)
       lines(seq(0,nc-1),thr%*%matrix(1,1,nc),type="l",  col="red",lwd=1)
@@ -30,7 +30,7 @@ function(ppf,nsamp,alpha,datastr){
      dev.set(which=1) 
      par(mfrow = c(4,ceiling(T/4)))
      for (i in 1:T)
-    { plot(seq(0,nc-1),ppf[i,], xlab="n = no. samples ", t = "h", ylab=ylab.name,lwd=1, ylim=c(-1,1))
+    { plot(seq(0,nc-1),ppf[i,], xlab="n = samples between ", t = "h", ylab=ylab.name,lwd=1, ylim=c(-1,1))
       abline(h = 0, col = "black")
       lines(seq(0,nc-1),-thr%*%matrix(1,1,nc),type="l", col="red",lwd=1)
       lines(seq(0,nc-1),thr%*%matrix(1,1,nc),type="l",  col="red",lwd=1)
