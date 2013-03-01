@@ -40,7 +40,7 @@ acfpacf<-function (x, nac, npac, datastr, ...)
    if (plfg) {
             par(mfrow = c(2, 1))
             ac = ac[seq(1, nac)]
-            plot(seq(0, (nac - 1)), ac, xlab = "n = no. samples", ylab = "ACF", 
+            plot(seq(0, (nac - 1)), ac, xlab = "lags", ylab = "ACF", 
                 t = "h", lwd = 2, col = valcol, xlim = c(0, nac), ylim = c(0,1))
             abline(h = 0, col = "black")
             lines(seq(0, (nac - 1)), conf[, 1], col = thrcol)
@@ -50,7 +50,7 @@ acfpacf<-function (x, nac, npac, datastr, ...)
             title(paste("Usual ACF of", datastr, " for n=", nx, "alpha = ", 
                 acalpha))
             pac = pac[seq(1, npac)]
-            plot(seq(0, (npac - 1)), pac, xlab = "lags", ylab = "PACF", 
+            plot(seq(0, (npac - 1)), pac, xlab = "n = no. samples between", ylab = "PACF", 
                 t = "h", lwd = 2, col = valcol, xlim = c(0, npac))
             abline(h = 0, col = "black")
             lines(seq(0, (npac - 1)), pconf[, 1], col = thrcol)
