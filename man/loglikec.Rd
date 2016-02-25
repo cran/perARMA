@@ -4,7 +4,7 @@
 Calculation of the logarithm of likelihood function
 }
 \description{
-Function \code{loglikec}, given \code{phi}, \code{del}, \code{theta} 
+Function \code{loglikec}, given \code{phi}, \code{del}, \code{theta}
 encoded in  \code{ptvec}, evaluates the logarithm of likelihood function from the
 PARMA series. Procedure returns also values of the AIC, FPE, BIC information criteria and MSE of residuals,
  what enables to examine residuals and  evaluate godness of model fit.
@@ -14,8 +14,8 @@ loglikec(ptvec, x, conpars)
 }
 \arguments{
   \item{ptvec}{
-vector of parameters for PARMA(p,q) model, containing matrix parameters 
-\code{phi} (of size \eqn{T \times p}), \code{del} (of size \eqn{T \times 1}), 
+vector of parameters for PARMA(p,q) model, containing matrix parameters
+\code{phi} (of size \eqn{T \times p}), \code{del} (of size \eqn{T \times 1}),
 \code{theta} (of size \eqn{T \times q}) as following \cr
 \code{ptvec = [phi[,1],...,phi[,p],del,theta[,1], ...,theta[,q]]}.
 }
@@ -25,20 +25,20 @@ input time series.
   \item{conpars}{vector of parameters \code{[T, p, q, stype]},\cr
  \code{T} period of PC-T structure,\cr
  \code{p, q} maximum PAR and PMA order, respectively,\cr
- \code{stype}  numeric parameter connected with covariance matrix computation, so far should be equal to 0 to use procedure 
-\code{R_w_ma} (see \code{R_w_ma} description). In the future also other values of \code{stype} will be available for 
-full covariance matrix computation.  
+ \code{stype}  numeric parameter connected with covariance matrix computation, so far should be equal to 0 to use procedure
+\code{R_w_ma} (see \code{R_w_ma} description). In the future also other values of \code{stype} will be available for
+full covariance matrix computation.
 }
 }
 \details{
-In this procedure first series \code{x} is filtered by matrix coefficients \code{phi}, \code{del}, \code{theta}. 
+In this procedure first series \code{x} is filtered by matrix coefficients \code{phi}, \code{del}, \code{theta}.
 The code to compute logarithm of likelihood function must includes
-the computation of covariance matrix from the parameters \code{phi}, \code{del}, \code{theta}. 
-Since the inverse of the computed covariance is needed for computing the likelihood, 
-and it is sometimes ill conditioned (or even singular), 
-the condition is improved by removing rows and columns corresponding to very small eigenvalues. 
-This corresponds to removing input data that is highly linearly dependent on the remaining 
-input data. The procedure contains a threshold ZTHRS (which current value is \code{10*eps}) that governs the discarding of rows and column corresponding to small eigenvalues (these are determined by a Cholesky decomposition). Any eigenvalue smaller than the threshold has its row and column deleted from the matrix. Then the 
+the computation of covariance matrix from the parameters \code{phi}, \code{del}, \code{theta}.
+Since the inverse of the computed covariance is needed for computing the likelihood,
+and it is sometimes ill conditioned (or even singular),
+the condition is improved by removing rows and columns corresponding to very small eigenvalues.
+This corresponds to removing input data that is highly linearly dependent on the remaining
+input data. The procedure contains a threshold ZTHRS (which current value is \code{10*eps}) that governs the discarding of rows and column corresponding to small eigenvalues (these are determined by a Cholesky decomposition). Any eigenvalue smaller than the threshold has its row and column deleted from the matrix. Then the
 inverse and the likelihood are computed from the reduced rank covariance matrix.
 }
 \value{
@@ -69,13 +69,13 @@ Vecchia, A., (1985), Periodic autoregressive-moving average (PARMA) modeling wit
 Bulletin, v. 21, no. 5.
 }
 \author{
-Harry Hurd 
+Harry Hurd
 }
 \seealso{
   \code{\link{R_w_ma}},  \code{\link{parmafil}}
 }
 \examples{
-## Do not run 
+## Do not run
 ## It could take a few seconds
 
 #data(volumes)

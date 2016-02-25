@@ -1,6 +1,6 @@
-persigest<-function (x, T, alpha, missval, datastr, ...) 
+persigest<-function (x, T, alpha, missval, datastr, ...)
 {
-    persigest_full <- function(x, T, alpha, missval, datastr, 
+    persigest_full <- function(x, T, alpha, missval, datastr,
         typeci, typepstd, pchci, pchpstd, colci, colpstd, pp) {
         nx = length(x)
         xind = seq(1, nx)
@@ -8,7 +8,7 @@ persigest<-function (x, T, alpha, missval, datastr, ...)
         nxact = nper * T
         nrem = nx - nxact
         if (!is.nan(datastr)) {
-            cat(paste("found ", nper, " periods of length ", 
+            cat(paste("found ", nper, " periods of length ",
                 T, " with remainder of ", nrem, "\n"))
         }
         if (is.nan(missval)) {
@@ -27,7 +27,7 @@ persigest<-function (x, T, alpha, missval, datastr, ...)
         ny <- matrix(0, T, 1)
         psci <- matrix(0, T, 2)
         X <- matrix()
-        
+
         vimiss<-c()
         for (i in 1:T) {
             index = seq(i, nx, T)
@@ -53,28 +53,28 @@ persigest<-function (x, T, alpha, missval, datastr, ...)
             a <- matrix(1, length(z), 1)
             ai <- a * i
             b <- list(t(z), t(ai))
-           
+
            vimiss[i]=length(imiss)
         }
 
-         if (pp) 
+         if (pp)
          {  detail <- matrix(c(ny,vimiss,pstd,psci[,1], psci[,2]),ncol=5)
             colnames(detail) <- c(" ngood", "nmiss"," pstd ", "lower", "upper")
             row.names(detail)<-paste("i=",seq(1,T), sep="")
-            print(detail) } 
+            print(detail) }
 
         htest <- bartlett.test(b)
         pspv <- htest[3]
         xd = t(x) - pmean1
         if (pp) {
-            matplot(psci, xlab = "seasons", ylab = "std", type = typeci, 
+            matplot(psci, xlab = "seasons", ylab = "std", type = typeci,
                 lwd = 1, lty = 1, col = colci, pch = pchci)
-            points(pstd1, type = typepstd, lwd = 1, lty = 1, 
+            points(pstd1, type = typepstd, lwd = 1, lty = 1,
                 col = colpstd, pch = pchpstd)
-            title(main = (paste("Periodic standard deviations: ", 
-                "No. periods =", nper, " alpha =", alpha)), sub = (paste("Bartlett p-value:", 
+            title(main = (paste("Periodic standard deviations: ",
+                "No. periods =", nper, " alpha =", alpha)), sub = (paste("Bartlett p-value:",
                 pspv)))
-            legend("bottomright", c(expression(std), expression(confidence_intervals)), 
+            legend("bottomright", c(expression(std), expression(confidence_intervals)),
                 fill = c(colpstd, colci), ncol = 2, title = "legend")
         }
         xn = xd/pstd1
@@ -82,9 +82,9 @@ persigest<-function (x, T, alpha, missval, datastr, ...)
         class(result) = "persigest"
         result
     }
-    L <- modifyList(list(typeci = "o", typepstd = "b", pchci = 10, 
-        pchpstd = 15, colci = "red", colpstd = "blue", pp = 1), 
-        list(x = x, T = T, alpha = alpha, missval = missval, 
+    L <- modifyList(list(typeci = "o", typepstd = "b", pchci = 10,
+        pchpstd = 15, colci = "red", colpstd = "blue", pp = 1),
+        list(x = x, T = T, alpha = alpha, missval = missval,
             datastr = datastr, ...))
     do.call(persigest_full, L)
 }

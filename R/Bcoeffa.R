@@ -1,6 +1,6 @@
-Bcoeffa<-function (x, T, tau, missval, datastr, ...) 
+Bcoeffa<-function (x, T, tau, missval, datastr, ...)
 {
-    Bcoeffa_full <- function(x, T, tau, missval, datastr, printflg, 
+    Bcoeffa_full <- function(x, T, tau, missval, datastr, printflg,
         meth) {
         nout = floor((T + 2)/2)
         nx = length(x)
@@ -60,7 +60,7 @@ Bcoeffa<-function (x, T, tau, missval, datastr, ...)
             nk = length(kindex)
             Bkhat[, k] = xxt[kindex]
             if (lag < 0) {
-                phase_correction = exp(i * 2 * pi * (kindex - 
+                phase_correction = exp(i * 2 * pi * (kindex -
                   1) * lag/ncor)
                 Bkhat[, k] = Bkhat[, k] * phase_correction
             }
@@ -68,9 +68,9 @@ Bcoeffa<-function (x, T, tau, missval, datastr, ...)
             kupper = floor((T - 1)/2)
             evenind = seq(2, 2 * kupper, 2)
             oddind = seq(3, (2 * kupper + 1), 2)
-            ahat[evenind, k] = 2 * Re(Bkhat[(2:(kupper + 1)), 
+            ahat[evenind, k] = 2 * Re(Bkhat[(2:(kupper + 1)),
                 k])
-            ahat[oddind, k] = -2 * Im(Bkhat[(2:(kupper + 1)), 
+            ahat[oddind, k] = -2 * Im(Bkhat[(2:(kupper + 1)),
                 k])
             if (T%/%2) {
                 ahat[T, k] = Re(Bkhat[(T/2) + 1, k])
@@ -83,7 +83,7 @@ Bcoeffa<-function (x, T, tau, missval, datastr, ...)
                   backav = sum(xxt2[kgood])/n2[kk, k]
                   num = (abs(ahat[kk, k])^2)/n1[kk, k]
                   fratio[kk, k] = num/backav
-                  pvec[kk, k] = 1 - pf(fratio[kk, k], n1[kk, 
+                  pvec[kk, k] = 1 - pf(fratio[kk, k], n1[kk,
                     k], n2[kk, k])
                 }
             }
@@ -100,12 +100,12 @@ Bcoeffa<-function (x, T, tau, missval, datastr, ...)
                   else {
                     if (T%%2 == 0 & kk == T) {
                       center = (T/2) * ncorper + 1
-                      kgood = seq((center - half), (center - 
+                      kgood = seq((center - half), (center -
                         1))
                     }
                     else {
                       center = (floor(kk/2)) * ncorper + 1
-                      kgood = c(seq((center - half), (center - 
+                      kgood = c(seq((center - half), (center -
                         1)), seq((center + 1), (center + half)))
                     }
                   }
@@ -113,7 +113,7 @@ Bcoeffa<-function (x, T, tau, missval, datastr, ...)
                   backav = sum(xxt2[kgood])/n2[kk, k]
                   num = (abs(ahat[kk, k])^2)/n1[kk, k]
                   fratio[kk, k] = num/backav
-                  pvec[kk, k] = 1 - pf(fratio[kk, k], n1[kk, 
+                  pvec[kk, k] = 1 - pf(fratio[kk, k], n1[kk,
                     k], n2[kk, k])
                 }
             }
@@ -129,13 +129,13 @@ Bcoeffa<-function (x, T, tau, missval, datastr, ...)
           print(detail)
             }
         }
-        result = list(ahat = ahat, nsamp = nsamp, n1 = n1, n2 = n2, 
+        result = list(ahat = ahat, nsamp = nsamp, n1 = n1, n2 = n2,
             fratio = fratio, pvec = pvec)
         class(result) = "Bcoeffa"
         result
     }
-    L <- modifyList(list(printflg = 1, meth = 0), list(x = x, 
-        T = T, tau = tau, missval = missval, datastr = datastr, 
+    L <- modifyList(list(printflg = 1, meth = 0), list(x = x,
+        T = T, tau = tau, missval = missval, datastr = datastr,
         ...))
     do.call(Bcoeffa_full, L)
 }

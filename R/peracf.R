@@ -1,7 +1,7 @@
-peracf<-function (x, T, tau, missval, datastr, ...) 
+peracf<-function (x, T, tau, missval, datastr, ...)
 {
-    peracf_full <- function(x, T, tau, missval, datastr, prttaus, 
-        plottaus, cialpha, typeci, typerho, pchci, pchrho, colci, 
+    peracf_full <- function(x, T, tau, missval, datastr, prttaus,
+        plottaus, cialpha, typeci, typerho, pchci, pchrho, colci,
         colrho) {
         nx = length(x)
         pmean1 <- matrix(0, nx, 1)
@@ -65,7 +65,7 @@ peracf<-function (x, T, tau, missval, datastr, ...)
         if (!length(union(prttaus, plottaus)) == 0) {
             for (k in 1:numtau) {
                 lag = tau[k]
-                if (is.element(lag, union(prttaus, plottaus)) & 
+                if (is.element(lag, union(prttaus, plottaus)) &
                   !lag == 0) {
                   lower <- matrix(NaN, T, 1)
                   upper <- matrix(NaN, T, 1)
@@ -80,12 +80,12 @@ peracf<-function (x, T, tau, missval, datastr, ...)
                     rhoci[z, 1] = lower
                     rhoci[z, 2] = upper
                   }
-                  rct <- rho.constant.test(Rho[iuse, k], nsamp[iuse, 
+                  rct <- rho.constant.test(Rho[iuse, k], nsamp[iuse,
                     k])
                   equalpv <- rct$pv
                   equalchi2 <- rct$chi2
                   ngood <- rct$ngood
-                  rzt <- rho.zero.test(Rho[iuse, k], nsamp[iuse, 
+                  rzt <- rho.zero.test(Rho[iuse, k], nsamp[iuse,
                     k])
                   zeropv <- rzt$pv
                   mzscore <- rzt$mzscore
@@ -94,11 +94,11 @@ peracf<-function (x, T, tau, missval, datastr, ...)
                   cat(paste("\n"))
 
 
-                 cat(paste("lag=", tau[k],"\n")) 
+                 cat(paste("lag=", tau[k],"\n"))
                  detail <- matrix(c(equalchi2,mzscore,equalpv,zeropv),ncol=2)
                  colnames(detail) <- c("test", "pv")
                  rownames(detail)<-c("rho(t+lag,t)=rho(lag), chi2 =", "rho(t+lag,t)=0, mzscore = ")
-                 print(detail) 
+                 print(detail)
                  saveequalpv=c(saveequalpv,equalpv)
                  savezeropv=c(savezeropv,zeropv)
 
@@ -108,27 +108,27 @@ peracf<-function (x, T, tau, missval, datastr, ...)
                  detail <- matrix(c(Rho[, k],rhoci[, 1],rhoci[, 2],nsamp[, k]),ncol=4)
                  colnames(detail) <- c("rho(t,lag)", "lower", "upper", "nsamp")
                  row.names(detail)<-paste("t=",seq(1,T), sep="")
-                 print(detail) 
+                 print(detail)
                     }
 
-                  
+
                   if (is.element(lag, plottaus)) {
                     dev.set(which = 1)
-                    matplot(seq(1, T), rhoci, xlab = "time t", 
-                      ylab = "rho(t,lag)", type = typeci, lwd = 1, 
+                    matplot(seq(1, T), rhoci, xlab = "time t",
+                      ylab = "rho(t,lag)", type = typeci, lwd = 1,
                       lty = 4, col = colci, pch = pchci, new = TRUE)
-                    points(seq(1, T), Rho[, k], type = typerho, 
-                      lwd = 2, lty = 4, col = colrho, pch = pchrho, 
+                    points(seq(1, T), Rho[, k], type = typerho,
+                      lwd = 2, lty = 4, col = colrho, pch = pchrho,
                       new = TRUE)
-                    legend("bottom", c("coefficients", "confidence intervals"), 
-                      fill = c(colrho, colci), ncol = 2, title = paste("Tests results: equalpv= ", 
+                    legend("bottom", c("coefficients", "confidence intervals"),
+                      fill = c(colrho, colci), ncol = 2, title = paste("Tests results: equalpv= ",
                         equalpv, "; zeropv= ", zeropv))
-                    title(main = paste(" Correlation coefficients rho(t,lag) for:", 
+                    title(main = paste(" Correlation coefficients rho(t,lag) for:",
                       datastr, " for lag=", tau[k]))
                   }
              }
-}   
-            
+}
+
         }
 
         nbf = length(saveequalpv)
@@ -142,19 +142,19 @@ peracf<-function (x, T, tau, missval, datastr, ...)
                 nmsavezeropv = 1
             }
             cat(paste("\n"))
-            cat(paste("least equalpv bonferroni corrected for", 
+            cat(paste("least equalpv bonferroni corrected for",
                 nbf, " lags tried:", nmsaveequalpv, "\n"))
-            cat(paste("least equalpv bonferroni corrected for", 
+            cat(paste("least equalpv bonferroni corrected for",
                 nbf, " lags tried:", nmsavezeropv, "\n"))
         }
         result = list(B = B, Rho = Rho, nsamp = nsamp)
         class(result) = "peracf"
         result
     }
-    L <- modifyList(list(prttaus = seq(1, T/2), plottaus = seq(1, 
-        T/2), cialpha = 0.05, typeci = "b", typerho = "b", pchci = 10, 
-        pchrho = 15, colci = "blue", colrho = "red"), list(x = x, 
-        T = T, tau = tau, missval = missval, datastr = datastr, 
+    L <- modifyList(list(prttaus = seq(1, T/2), plottaus = seq(1,
+        T/2), cialpha = 0.05, typeci = "b", typerho = "b", pchci = 10,
+        pchrho = 15, colci = "blue", colrho = "red"), list(x = x,
+        T = T, tau = tau, missval = missval, datastr = datastr,
         ...))
     do.call(peracf_full, L)
 }
