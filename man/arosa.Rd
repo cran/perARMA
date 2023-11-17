@@ -12,9 +12,6 @@ A fifty-year time series of monthly stratospheric ozone readings from Arosa, Swi
   The format is:
  Time-Series [1:684] from 1 to 684: NaN NaN NaN NaN NaN NaN 312 300 281 267 ...
 }
-\source{
-\url{http://www.stat.unc.edu/faculty/hurd/stat185Data/arosadoc.html}
-}
 \references{
 Bloomfield, P., Hurd, H. L.,Lund, R., (1994), Periodic correlation
  in stratospheric ozone data. Journal of Time Series Analysis 15, 127-150.

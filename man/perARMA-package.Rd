@@ -29,11 +29,9 @@ Prediction: \code{predictperYW}, \code{predseries}\cr
 Simulation and testing: \code{makeparma}, \code{parma_ident}\cr
 \cr
 For a complete list of procedures use \code{library(help="perARMA")}. \cr
-For short overview some of the procedures in Matlab version see the webpage:
-\url{http://www.unc.edu/~hhurd/pc-sequences/book_progs_data.html}.
 }
 \author{Anna Dudek, Harry Hurd and Wioletta Wojtowicz \cr
-Maintainer: Wioletta Wojtowicz <wioletta.wojtowicz26@gmail.com>
+Maintainer: Karolina Marek <karolina.marek10@gmail.com>
 }
 
 \references{

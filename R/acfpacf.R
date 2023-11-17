@@ -45,7 +45,8 @@ acfpacf<-function (x, nac, npac, datastr, ...)
         pconfmh[, 2] = -pconfmh[, 1]
 
    if (plfg) {
-            par(mfrow = c(2, 1))
+            p_par=par(mfrow = c(2, 1))
+            on.exit(par(p_par), add = TRUE)
             ac = ac[seq(1, nac)]
             plot(seq(0, (nac - 1)), ac, xlab = "lags", ylab = "ACF",
                 t = "h", lwd = 2, col = valcol, xlim = c(0, nac), ylim = c(0,1))
@@ -67,6 +68,7 @@ acfpacf<-function (x, nac, npac, datastr, ...)
             lines(seq(0, (npac - 1)), pconfmh[, 2], col = thrmhcol)
             title(paste("Usual PACF of", datastr, " for n=", nx, "alpha =  ",
                 pacalpha))
+            par(mfrow = c(1, 1))
         }
     }
     L <- modifyList(list(plfg = 1, acalpha = 0.05, pacalpha = 0.05,
